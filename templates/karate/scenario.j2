@@ -1,0 +1,8 @@
+Scenario: {{ scenario.business_name }}
+{% for step in scenario.setup_steps %}
+    {{ step }}
+{% endfor %}
+    {{ scenario.path_step }}
+    And request {{ scenario.request_var }}
+    When method {{ scenario.method }}
+    Then status {{ scenario.expected_status }}

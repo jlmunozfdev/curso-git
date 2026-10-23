@@ -1,0 +1,15 @@
+Feature: {{ feature_title }}
+
+Background:
+    * url baseUrl
+{% if needs_base_request %}
+    * def baseRequest = read('classpath:requests/{{ base_request_file }}')
+{% endif %}
+{% for scenario in scenarios %}
+
+{% if scenario.type == "scenario" %}
+{% include "scenario.j2" %}
+{% else %}
+{% include "scenario_outline.j2" %}
+{% endif %}
+{% endfor %}
